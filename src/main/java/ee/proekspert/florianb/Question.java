@@ -2,39 +2,37 @@ package ee.proekspert.florianb;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
-import java.util.HashMap;
-import java.util.Map;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
+@Entity
 @JsonInclude(JsonInclude.Include.NON_NULL)
 class Question {
 
-    private final int questionId;
-    private final String question;
+    @GeneratedValue
+    @Id
+    public long questionId;
+
+    private final String questionText;
     private final String description;
-    private final Map<Integer, Answer> answerOptions = new HashMap<>();
 
 
-    Question(int questionId, String question, String description) {
+    Question(int questionId, String questionText, String description) {
         this.questionId = questionId;
-        this.question = question;
+        this.questionText = questionText;
         this.description = description;
     }
 
-    public int getQuestionId() {
+    public long getQuestionId() {
         return questionId;
     }
 
-    public String getQuestion() {
-        return question;
+    public String getQuestionText() {
+        return questionText;
     }
 
     public String getDescription() {
         return description;
-    }
-
-    public void addAnswer(String answerText, boolean correctness) {
-        Answer answer = new Answer(questionId, answerId, answerText, correctness);
-        while (answerOptions.containsKey(answer.))
-            answerOptions.put()
     }
 }
