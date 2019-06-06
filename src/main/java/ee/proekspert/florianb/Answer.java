@@ -2,26 +2,34 @@ package ee.proekspert.florianb;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Answer {
 
-    private final int questionId;
-    private final int answerId;
+    @GeneratedValue
+    @Id
+    public long answerId;
+
+    private final long questionId;
     private final String answer;
     private final boolean correctness;
 
-    public Answer(int questionId, int answerId, String answer, boolean correctness) {
+    public Answer(long questionId, long answerId, String answer, boolean correctness) {
         this.questionId = questionId;
         this.answerId = answerId;
         this.answer = answer;
         this.correctness = correctness;
     }
 
-    public int getQuestionId() {
+    public long getQuestionId() {
         return questionId;
     }
 
-    public int getAnswerId() {
+    public long getAnswerId() {
         return answerId;
     }
 
@@ -29,7 +37,7 @@ public class Answer {
         return answer;
     }
 
-    public boolean isCorrectness() {
+    public boolean isCorrect() {
         return correctness;
     }
 }
