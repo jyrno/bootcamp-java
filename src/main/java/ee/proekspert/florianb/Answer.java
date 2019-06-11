@@ -1,6 +1,8 @@
 package ee.proekspert.florianb;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +11,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "ANSWERS")
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@Getter
+@Setter
+@AllArgsConstructor
 public class Answer {
 
     @GeneratedValue
@@ -18,28 +22,5 @@ public class Answer {
 
     private final long questionId;
     private final String answer;
-    private final boolean correctness;
-
-    public Answer(long questionId, long answerId, String answer, boolean correctness) {
-        this.questionId = questionId;
-        this.answerId = answerId;
-        this.answer = answer;
-        this.correctness = correctness;
-    }
-
-    public long getQuestionId() {
-        return questionId;
-    }
-
-    public long getAnswerId() {
-        return answerId;
-    }
-
-    public String getAnswer() {
-        return answer;
-    }
-
-    public boolean isCorrect() {
-        return correctness;
-    }
+    private final boolean isCorrect;
 }

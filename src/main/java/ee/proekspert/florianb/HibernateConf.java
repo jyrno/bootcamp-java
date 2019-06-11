@@ -19,8 +19,7 @@ public class HibernateConf {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan(new String[]
-                {"ee.proekspert.florianb"});
+        sessionFactory.setPackagesToScan("ee.proekspert.florianb");
         sessionFactory.setHibernateProperties(hibernateProperties());
 
         return sessionFactory;
