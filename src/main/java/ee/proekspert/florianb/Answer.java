@@ -5,14 +5,16 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "ANSWERS")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Answer {
 
     @GeneratedValue
     @Id
-    public long answerId;
+    private long answerId;
 
     private final long questionId;
     private final String answer;
